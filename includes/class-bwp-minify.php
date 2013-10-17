@@ -1,6 +1,6 @@
 <?php
 /**
- * DEFERRED CAPABILITY IN BETA V2 : LINE > 1004
+ * DEFERRED CAPABILITY IN BETA V2 : LINE > 1106
  * THERE IS A LOT OF WORK TO DO FOR THE STABLE VERSION OF DEFERRING CAPACITY.
  * RUN SOME TEST WITH ALL THE CAPACITY OF BWP MINIFY TO DO !
  *
@@ -254,7 +254,7 @@ if (!empty($page))
 			'heading'			=> array(
 				'h1'	=> '',
 				'h2'	=> __('<em>Options that affect both your stylesheets and scripts.</em>', 'bwp-minify'),
-				'h3'	=> sprintf(__('<em>You can force the position of each script using those inputs below (e.g. you have a script registered in the header but you want to minify it in the footer instead). If you are still unsure, please read more <a href="%s#positioning-your-scripts">here</a>. Type in one script handle (<strong>NOT filename</strong>) per line.</em>', 'bwp-minify'), $this->plugin_url)
+				'h3'	=> sprintf(__('<em>You can force the position of each script using those inputs below (e.g. you have a script registered in the header but you want to minify it in the footer instead). If you are still unsure, please read more <a href="%s#positioning-your-scripts">here</a>. Type in one script handle (<strong>NOT filename</strong>) per line.</em>.</br>Check the <a href="http://codex.wordpress.org/Function_Reference/wp_register_script#Handles_and_Their_Script_Paths_Registered_by_WordPress" target="_blank">default wordpress handle</a>', 'bwp-minify'), $this->plugin_url)
 			),
 			'select' => array(
 				'select_time_type' => array(
@@ -383,7 +383,6 @@ if (!empty($page))
 		})
 	</script>
 <?php
-
 		// Assign the form and option array		
 		$bwp_option_page->init($form, $options, $this->form_tabs);
 
@@ -542,7 +541,7 @@ if (!empty($page))
 			return true;
 		return false;
 	}
-
+	
 	/**
 	 * Check if media source is local
 	 */
@@ -981,7 +980,6 @@ if (!empty($page))
 	function minify_scripts($todo)
 	{
 		global $wp_scripts;
-
 		// Avoid conflict with WordPress 3.1
 		if (1 == sizeof($todo) && isset($todo[0]) && 'l10n' == $todo[0])
 			return array();
@@ -1095,6 +1093,7 @@ if (!empty($page))
 	 *
 	 * Use actions provided to add other things before or after the output.
 	 */	
+	 
 	function print_scripts($action = 'header')
 	{
 		do_action('bwp_minify_before_' . $action . '_scripts');
@@ -1110,7 +1109,9 @@ if (!empty($page))
 						$to_deferring = implode(',', $script_array);
 						$scheme_str = is_ssl() && !is_admin() ? 'https://' : 'http://';
 						$path_and_deferring = apply_filters('bwp_get_minify_src', trailingslashit(str_replace(array('http://', 'https://'), $scheme_str, $this->options['input_minurl'])) . '?f=' . $to_deferring, $this->options['input_minurl']);
-						$do_deferring .= '<script>'.'$LAB'.'.script("'.$path_and_deferring.'").wait();</script>';
+						$do_deferring .= '<script>' . "\r\n";					
+						$do_deferring .= '$LAB'.'.script("'.$path_and_deferring.'").wait()';
+						$do_deferring .= ';' . "\r\n" . '</script>';
 					echo $do_deferring;
 					// End of deferring
 				}
@@ -1174,10 +1175,9 @@ if (!empty($page))
 	function print_scripts_l10n($scripts)
 	{
 		global $wp_scripts;
-
 		foreach ($scripts as $handle)
-			if (version_compare($this->ver, '3.3', '>='))
-				$wp_scripts->print_extra_script($handle);
+			if (version_compare($this->ver, '3.3', '>=')){
+				$wp_scripts->print_extra_script($handle);}
 			else
 				$wp_scripts->print_scripts_l10n($handle);
 	}
