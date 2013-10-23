@@ -30,6 +30,8 @@ bwp-minify
 <h4>1.3.6</h4>
 
 <ul>
+<li>Update Minify library to (2.1.7), there was a sérious <a href="https://groups.google.com/forum/#!msg/minify/cpN-ncKPFZE/kwYVpLMkfDwJ">vulnerability</a> on all the old version</li>
+<li>Fix : jquery enqueued but wrong script written after. (WP_3.6)</li>
 <li>Add deferred capacity for javascript files (beta)</li>
 </ul>
 
