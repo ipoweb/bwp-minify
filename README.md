@@ -9,7 +9,7 @@ bwp-minify
 
 <ul>
 <li>Put the Lib : LAB.js in cnd (script that create the deferred)</li>
-<li><strong>Scripts to not deferred (not asynchrone) Beta</strong></li>
+<li>Scripts to not deferred (not asynchrone)</li>
 <li>Uses the enqueueing system of WordPress which improves compatibility with other plugins and themes</li>
 <li>Allows you to customize all minify strings</li>
 <li>Allows you to change various Minify configuration options by editing the config file directly</li>
