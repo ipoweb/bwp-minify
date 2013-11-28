@@ -1,6 +1,5 @@
 <?php
 /**
- * DEFERRED CAPABILITY IN BETA V2 : LINE > 1106
  * THERE IS A LOT OF WORK TO DO FOR THE STABLE VERSION OF DEFERRING CAPACITY.
  * RUN SOME TEST WITH ALL THE CAPACITY OF BWP MINIFY TO DO !
  *
@@ -482,9 +481,18 @@ if (!empty($page))
 			break;
 
 			case 'tver':
-				$theme = get_theme_data(STYLESHEETPATH . '/style.css');
-				if (!empty($theme['Version']))
-					$buster = $theme['Version'];
+if (function_exists('wp_get_theme')) {
+          $theme = wp_get_theme(STYLESHEETPATH);
+          if ($theme) {
+            $version = $theme->get('Version');
+            if (!empty($version))
+              $buster = $version;
+          }
+        } else {
+          $theme = get_theme_data(STYLESHEETPATH . '/style.css');
+          if (!empty($theme['Version']))
+            $buster = $theme['Version'];
+        }
 			break;
 
 			case 'custom':
@@ -1132,7 +1140,7 @@ if (!empty($page))
 			foreach ($verif_header as $verif_header_string)
 			// if there is some script in header > echo...
 			if (!empty($verif_header_string)){
-				echo '<script src="' . plugin_dir_url( __FILE__ ) . 'js_deferred/lab.min.js"></script>' . "\r\n";}}
+				echo '<script src="http://cdnjs.cloudflare.com/ajax/libs/labjs/2.0.3/LAB.min.js"></script>' . "\r\n";}}
 		$this->print_scripts();
 		do_action('bwp_minify_printed_header_scripts');
 	}
@@ -1144,7 +1152,7 @@ if (!empty($page))
 				foreach ($verif_header as $verif_header_string)
 				// if there is no script in header > echo...
 				if (empty($verif_header_string)){
-					echo '<script src="' . plugin_dir_url( __FILE__ ) . 'js_deferred/lab.min.js"></script>' . "\r\n";}}
+					echo '<script src="http://cdnjs.cloudflare.com/ajax/libs/labjs/2.0.3/LAB.min.js"></script>' . "\r\n";}}
 		$this->print_scripts('footer');
 		do_action('bwp_minify_printed_footer_scripts');
 	}
