@@ -1,13 +1,14 @@
 bwp-minify
 ==========
 
-<p>Compatibilities => up to WP_3.6.X</p>
+<p>Compatibilities => up to WP_3.7.X</p>
 
 <div class="block-content"><p>Allows you to minify your CSS and JS files for faster page loading for visitors. This plugin uses the PHP library <a href="http://code.google.com/p/minify/" rel="nofollow">Minify</a> and relies on WordPress's enqueueing system rather than the output buffer (will not break your website in most cases). This plugin is very customizable and easy to use.</p>
 
 <p><strong>Some Features</strong></p>
 
 <ul>
+<li>Put the Lib : LAB.js in cnd (script the create the deferred)</li>
 <li><strong>Scripts to not deferred (not asynchrone) Beta</strong></li>
 <li>Uses the enqueueing system of WordPress which improves compatibility with other plugins and themes</li>
 <li>Allows you to customize all minify strings</li>
