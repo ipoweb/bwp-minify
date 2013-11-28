@@ -6,7 +6,7 @@ Description: Allows you to minify your CSS and JS files for faster page loading 
 Version: 1.3.6
 Text Domain: bwp-minify
 Domain Path: /languages/
-Author: Khang Minh // Fix for WP3.6.x and update of Minify to 2.1.7 + Deferred (beta 2) By JibsouX
+Author: Khang Minh // Fix for WP3.7.x and update of Minify to 2.1.7 + Deferred (beta 3) By JibsouX
 Author URI: http://betterwp.net
 License: GPLv3
 */
